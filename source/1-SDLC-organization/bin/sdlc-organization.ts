@@ -70,19 +70,19 @@ const nestedOU = [
 ];
 
 
-new AWSBootstrapKitLandingZoneStage(app, 'Prod',{
-  email,
-  forceEmailVerification,
-  nestedOU,
-  rootHostedZoneDNSName,
-  thirdPartyProviderDNSUsed
+new AWSBootstrapKitLandingZoneStage(app, 'Prod', {
+    email,
+    forceEmailVerification,
+    nestedOU,
+    rootHostedZoneDNSName,
+    thirdPartyProviderDNSUsed
 });
 
 new AWSBootstrapKitLandingZonePipelineStack(app, 'AWSBootstrapKit-LandingZone-PipelineStack', {
-  email,
-  forceEmailVerification,
-  pipelineDeployableRegions,
-  nestedOU,
-  rootHostedZoneDNSName,
-  thirdPartyProviderDNSUsed
+    email,
+    forceEmailVerification,
+    pipelineDeployableRegions,
+    nestedOU,
+    rootHostedZoneDNSName,
+    thirdPartyProviderDNSUsed
 });

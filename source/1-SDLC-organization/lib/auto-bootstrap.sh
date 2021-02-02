@@ -38,10 +38,10 @@ for ACCOUNT in $ACCOUNTS; do
     
     # Assume the right role
 
-    assumes_role=`aws sts assume-role --role-arn arn:aws:iam::${ACCOUNT_ID}:role/OrganizationAccountAccessRole --role-session-name ${ACCOUNT_NAME}`;
-    aws configure set profile.$ACCOUNT_NAME.aws_access_key_id `echo $assumes_role | jq -r .Credentials.AccessKeyId`;
-    aws configure set profile.$ACCOUNT_NAME.aws_secret_access_key `echo $assumes_role | jq -r .Credentials.SecretAccessKey`;
-    aws configure set profile.$ACCOUNT_NAME.aws_session_token `echo $assumes_role | jq -r .Credentials.SessionToken`;
+    assumes_role=$(aws sts assume-role --role-arn arn:aws:iam::${ACCOUNT_ID}:role/OrganizationAccountAccessRole --role-session-name ${ACCOUNT_NAME});
+    aws configure set profile.$ACCOUNT_NAME.aws_access_key_id $(echo $assumes_role | jq -r .Credentials.AccessKeyId);
+    aws configure set profile.$ACCOUNT_NAME.aws_secret_access_key $(echo $assumes_role | jq -r .Credentials.SecretAccessKey);
+    aws configure set profile.$ACCOUNT_NAME.aws_session_token $(echo $assumes_role | jq -r .Credentials.SessionToken);
 
     # Bootstrap
     echo "Bootrapping account $ACCOUNT_NAME of tagged with ${TAGS} ..."
